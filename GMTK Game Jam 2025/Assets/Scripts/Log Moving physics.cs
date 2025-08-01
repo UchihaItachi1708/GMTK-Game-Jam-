@@ -21,7 +21,7 @@ public class LogMovingphysics : MonoBehaviour
     private void Update()
     {
         
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.8f, LayerMask))
+        if (Physics2D.Raycast(transform.position, Vector2.down, 0.7f, LayerMask))
         {
             transform.Translate(new Vector2(LogSpeed, 0f) * Time.deltaTime);
             IsGround = true;
@@ -40,6 +40,6 @@ public class LogMovingphysics : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 0.8f);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 0.7f);
     }
 }

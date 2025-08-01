@@ -12,7 +12,8 @@ public class ParallaxTrigger : MonoBehaviour
         if(other.gameObject.CompareTag("Spawn"))
         {
           Instantiate(Parallax,new Vector3 (50f, -6.877779f), Quaternion.identity);
-          Instantiate(Log,new Vector3(22.97f, -2.83f),Quaternion.identity);
+          GameObject log = Instantiate(Log,new Vector3(14f, -2.83f),Quaternion.identity);
+          Destroy(log, 5f);
 
         }
        

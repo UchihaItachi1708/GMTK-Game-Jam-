@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7923384360474842031}
   - component: {fileID: 2716263421162186567}
   - component: {fileID: 8500752731454687987}
-  - component: {fileID: 1876192567798867842}
   m_Layer: 0
   m_Name: Log Small
   m_TagString: Untagged
@@ -101,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
@@ -269,21 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a009a6c1ab65942bd71329bc7f6fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LogSpeed: -10
+  LogSpeed: -5
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
   log_fall: {fileID: 2716263421162186567}
   logclip: {fileID: 8300000, guid: 1117399ea6007b84d81e67309d426ad6, type: 3}
---- !u!114 &1876192567798867842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3063839962933088258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f1787c5cdb4fab418ae3e562b14e398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
