@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scenemanager : MonoBehaviour
 {
-    float WaitBeforeStart = 5f;
+   
     void Update()
     {
         
@@ -26,11 +26,7 @@ public class Scenemanager : MonoBehaviour
 
        
 
-        WaitBeforeStart -= Time.deltaTime;
-        if(WaitBeforeStart < 0 && SceneManager.GetActiveScene().buildIndex !=3)
-        {
-            SceneManager.LoadScene(3);
-        }
+       
         
     }
 

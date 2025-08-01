@@ -6,9 +6,10 @@ public class Audiomanager : MonoBehaviour
 {
    
     [SerializeField] AudioSource WalkingAudio;
-
+   
    
     [SerializeField] AudioClip Walking;
+    
 
 
     private void Start()

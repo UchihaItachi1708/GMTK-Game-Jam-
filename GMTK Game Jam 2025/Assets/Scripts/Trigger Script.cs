@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerScript : MonoBehaviour
 {
     [SerializeField] private GameObject Floor;
+    [SerializeField] private GameObject Grass;
    
 
 
@@ -13,6 +14,7 @@ public class TriggerScript : MonoBehaviour
         if(other.gameObject.CompareTag("Trigger"))
         {
             Instantiate(Floor,new Vector2(10f,0f), Quaternion.identity);
+            Instantiate(Grass,new Vector2(25f, -8.21f),Quaternion.identity);
             
         }
     }
