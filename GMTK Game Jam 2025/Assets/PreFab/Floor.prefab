@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1736929668495184845}
   - component: {fileID: 2194838324893071603}
   - component: {fileID: 44174766062294090}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3878238056623426042}
   - component: {fileID: 1718567167569308625}
   - component: {fileID: 7947784482235484362}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8302826149301621393}
   - component: {fileID: 5793144323112321921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor Collider
   m_TagString: Trigger
   m_Icon: {fileID: 0}
