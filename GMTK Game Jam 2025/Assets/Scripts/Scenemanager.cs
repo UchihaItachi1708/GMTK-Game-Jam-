@@ -8,9 +8,15 @@ public class Scenemanager : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().buildIndex != 2)
+        if (Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().buildIndex != 1)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
+        
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(2);
     }
 }
