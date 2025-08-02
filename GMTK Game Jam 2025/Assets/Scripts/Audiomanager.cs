@@ -20,4 +20,22 @@ public class Audiomanager : MonoBehaviour
         WalkingAudio.loop = true;
         WalkingAudio.Play();
     }
+
+    public void Walkingaudio()
+    {
+        WalkingAudio.Stop();
+    }
+    public void Walkingaudio2()
+    {
+        if (!WalkingAudio.isPlaying)
+        {
+            WalkingAudio.Play();
+        }
+    }
+
+    public void PauseAudio()
+    {
+        WalkingAudio.Pause();
+    }
+
 }
