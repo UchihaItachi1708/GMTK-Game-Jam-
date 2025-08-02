@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -11,24 +12,16 @@ public class Player_Movement : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     [SerializeField] private Audiomanager audiomanager;
-    [SerializeField] private GameObject button;
+    private bool Isground = false;
 
-    // Post-processing
-    private Volume globalVolume;
-    private Vignette vignette;
-
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audiomanager = FindObjectOfType<Audiomanager>();
 
-        // Get the Volume and Vignette
-        globalVolume = FindObjectOfType<Volume>();
-        if (globalVolume != null && globalVolume.profile.TryGet(out vignette))
-        {
-            vignette.intensity.Override(0.266f); 
-        }
+       
     }
 
     void Update()
@@ -39,7 +32,12 @@ public class Player_Movement : MonoBehaviour
             {
                 animator.SetBool("Jump", true);
                 rb.velocity = new Vector2(0, JumpForce);
+                Isground = true;
             }
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            animator.SetBool("Slide", true);
         }
     }
 
@@ -66,35 +64,19 @@ public class Player_Movement : MonoBehaviour
     public void Tripping()
     {
         Time.timeScale = 0f;
+        SceneManager.LoadScene(4);
+        Time.timeScale = 1.0f;
 
         if (audiomanager != null)
         {
             audiomanager.Walkingaudio(); 
         }
 
-        if (vignette != null)
-        {
-            StartCoroutine(FadeVignette(0.7f, 2f));
-        }
+       
     }
 
+    
 
-    private IEnumerator FadeVignette(float targetIntensity, float duration)
-    {
-        float start = vignette.intensity.value;
-        float elapsed = 0f;
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.unscaledDeltaTime; // Use unscaled time since timeScale = 0
-            float current = Mathf.Lerp(start, targetIntensity, elapsed / duration);
-            vignette.intensity.Override(current);
-            yield return null;
-        }
-
-        vignette.intensity.Override(targetIntensity);
-
-        button.SetActive(true);
-
-    }
+   
 }
