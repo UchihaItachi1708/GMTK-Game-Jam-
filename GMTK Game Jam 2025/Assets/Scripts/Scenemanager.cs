@@ -18,7 +18,7 @@ public class Scenemanager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(4);
 
             }
         }

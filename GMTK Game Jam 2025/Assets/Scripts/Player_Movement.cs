@@ -12,16 +12,29 @@ public class Player_Movement : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     [SerializeField] private Audiomanager audiomanager;
-    private bool Isground = false;
+    [SerializeField] private AudioSource trippingSource;
+    [SerializeField] private AudioClip trippingClip;
+    [SerializeField] private GameObject Devils;
+    // private bool Isground = false;
 
-   
+    // Post-processing
+    private Volume globalVolume;
+    private Vignette vignette;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audiomanager = FindObjectOfType<Audiomanager>();
+        // Get the Volume and Vignette
+        globalVolume = FindObjectOfType<Volume>();
+        if (globalVolume != null && globalVolume.profile.TryGet(out vignette))
+        {
+            vignette.intensity.Override(0.266f);
+        }
 
-       
+
     }
 
     void Update()
@@ -32,7 +45,7 @@ public class Player_Movement : MonoBehaviour
             {
                 animator.SetBool("Jump", true);
                 rb.velocity = new Vector2(0, JumpForce);
-                Isground = true;
+               // Isground = true;
             }
         }
         if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -63,9 +76,18 @@ public class Player_Movement : MonoBehaviour
 
     public void Tripping()
     {
+        Devils.SetActive(true);
+        trippingSource.clip = trippingClip;
+        trippingSource.Play();
+
         Time.timeScale = 0f;
-        SceneManager.LoadScene(4);
-        Time.timeScale = 1.0f;
+
+        if (vignette != null)
+        {
+            StartCoroutine(FadeVignette(1f, 2f));
+        }
+
+        
 
         if (audiomanager != null)
         {
@@ -75,8 +97,28 @@ public class Player_Movement : MonoBehaviour
        
     }
 
-    
+    private IEnumerator FadeVignette(float targetIntensity, float duration)
+    {
+        float start = vignette.intensity.value;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float current = Mathf.Lerp(start, targetIntensity, elapsed / duration);
+            vignette.intensity.Override(current);
+            yield return null;
+        }
+
+        vignette.intensity.Override(targetIntensity);
+        SceneManager.LoadScene(5);
+        Time.timeScale = 1.0f;
 
 
-   
+    }
+
+
+
+
+
 }
